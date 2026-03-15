@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cómo Usar Stripe para Cobrar a Clientes Internacionales como Freelancer — LibreStack</title>
+  <meta name="description" content="Guía completa de Stripe para freelancers. Aprende a configurar pagos, crear facturas, gestionar suscripciones y cobrar a clientes de todo el mundo."/>
+  <meta name="keywords" content="Stripe freelancer, cobrar clientes internacionales, pagos online freelancer, facturación Stripe"/>
+  <meta name="robots" content="index, follow"/>
+  <meta property="og:title" content="Cómo Usar Stripe para Cobrar a Clientes Internacionales como Freelancer"/>
+  <meta property="og:description" content="Guía completa de Stripe para freelancers. Aprende a configurar pagos, crear facturas, gestionar suscripciones y cobrar a clientes de todo el mundo."/>
+  <meta property="og:type" content="article"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://librestack.com/stripe-cobrar-clientes-internacionales.html"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Cómo Usar Stripe para Cobrar a Clientes Internacionales como Freelancer","description":"Guía completa de Stripe para freelancers. Aprende a configurar pagos, crear facturas, gestionar suscripciones y cobrar a clientes de todo el mundo.","datePublished":"2025-03-15","author":{"@type":"Organization","name":"LibreStack"},"publisher":{"@type":"Organization","name":"LibreStack"}}
+  </script>
+  <style>
+    .ah{background:linear-gradient(135deg,#f0f4ff,var(--gold-pale));padding:64px 0 48px;text-align:center;}
+    .ah em{font-size:3.5rem;display:block;margin-bottom:18px;}
+    .ah-meta{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;font-size:0.8rem;color:var(--ink-muted);}
+    .ab{max-width:760px;margin:0 auto;padding:56px 24px;}
+    .ab-intro{font-size:1.08rem;color:var(--ink-soft);line-height:1.8;margin-bottom:36px;padding-bottom:28px;border-bottom:2px solid var(--cream-dark);}
+    .ab h2{margin:36px 0 14px;}
+    .ab h3{margin:22px 0 10px;font-size:1.1rem;}
+    .ab p{margin-bottom:14px;}
+    .ab ul,.ab ol{padding-left:22px;margin-bottom:18px;display:flex;flex-direction:column;gap:7px;}
+    .ab li{color:var(--ink-soft);line-height:1.7;}
+    .cta-box{background:var(--ink);border-radius:16px;padding:36px;text-align:center;margin:44px 0;color:var(--cream);}
+    .cta-box h3{color:var(--cream);margin-bottom:8px;}
+    .cta-box p{color:rgba(245,240,232,0.7);margin-bottom:20px;}
+    .rating-box{background:var(--white);border:1px solid rgba(26,21,16,0.08);border-radius:12px;padding:22px;margin:28px 0;display:flex;align-items:center;gap:18px;}
+    .rating-score{font-family:var(--serif);font-size:2.6rem;color:var(--gold);flex-shrink:0;}
+    .rel-section{margin-top:56px;padding-top:36px;border-top:2px solid var(--cream-dark);}
+    .rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;}
+    .related-card{background:var(--white);border-radius:10px;padding:18px;border:1px solid rgba(26,21,16,0.07);display:flex;flex-direction:column;transition:all 0.2s;}
+    .related-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+    .related-card h4{font-size:0.88rem;line-height:1.4;}
+    .author-box{background:var(--cream-dark);border-radius:12px;padding:22px;margin:36px 0;display:flex;gap:14px;align-items:center;}
+    .author-avatar{width:50px;height:50px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--cream);font-size:1.3rem;flex-shrink:0;}
+    .disc-note{font-size:0.78rem;color:var(--ink-muted);padding:10px 14px;background:var(--cream-dark);border-radius:6px;margin-bottom:28px;}
+    @media(max-width:640px){.rel-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<section class="ah">
+  <div class="container--narrow">
+    <em><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></em>
+    <div class="ah-meta">
+      <span class="tag tag--rust">Tutorial</span>
+      <span>· Facturación</span>
+      <span>· 10 de febrero de 2025</span>
+      <span>· ⏱ 13 min</span>
+    </div>
+    <h1>Cómo Usar Stripe para Cobrar a Clientes Internacionales como Freelancer</h1>
+  </div>
+</section>
+<div class="ab fade-up">
+  <div class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="index.html#blog">Facturación</a>
+    <span class="breadcrumb__sep">›</span>
+    <span>Cómo Usar Stripe para Cobrar a Clientes Inter...</span>
+  </div>
+  <p class="disc-note"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>️ Aviso de afiliados: Este artículo puede contener enlaces de afiliados. <a href="affiliate-disclosure.html" style="color:var(--teal);">Más información</a>.</p>
+  <p class="ab-intro">Cobrar a clientes internacionales sigue siendo uno de los mayores dolores de cabeza para los freelancers hispanohablantes. Transferencias bancarias con comisiones altísimas, PayPal con retenciones arbitrarias, y semanas de espera. Stripe resuelve todos estos problemas con una plataforma profesional, confiable y con las comisiones más competitivas del mercado.</p>
+  
+<h2>¿Por qué Stripe es la mejor opción para freelancers?</h2>
+<ul>
+  <li><strong>Comisiones transparentes:</strong> 2.9% + $0.30 por transacción en USD, sin tarifas ocultas ni mensualidades</li>
+  <li><strong>Acepta 135+ monedas:</strong> Cobra en la moneda de tu cliente y recibe en la tuya</li>
+  <li><strong>Transferencias rápidas:</strong> 2 días hábiles a tu cuenta bancaria en la mayoría de países</li>
+  <li><strong>Link de pago instantáneo:</strong> Sin necesidad de código — crea un enlace de pago en 2 minutos</li>
+  <li><strong>Facturación integrada:</strong> Stripe Invoicing para enviar facturas profesionales con pago con un clic</li>
+</ul>
+<h2>Configuración inicial de Stripe</h2>
+<div style="background:var(--teal-pale);border-left:4px solid var(--teal);padding:16px 20px;border-radius:4px;margin:16px 0;">
+  <strong style="color:var(--teal);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg> Requisitos:</strong> Documento de identidad, cuenta bancaria local, número fiscal (cuando aplique). El proceso toma 10-20 minutos.
+</div>
+<p>Ve a stripe.com y crea una cuenta. Necesitarás verificar tu identidad con un documento oficial y conectar tu cuenta bancaria para recibir pagos. El proceso de verificación toma entre 1-3 días hábiles.</p>
+<h2>Stripe Invoicing: Facturas que se pagan solas</h2>
+<p>Una de las funciones más subestimadas de Stripe para freelancers es Invoicing. Puedes crear facturas profesionales en minutos y tus clientes pueden pagar directamente con tarjeta de crédito desde el PDF, sin necesidad de que tengan cuenta en Stripe.</p>
+<h3>Cómo crear una factura en Stripe</h3>
+<ol>
+  <li>Ve al Dashboard → Facturación → Facturas → Nueva factura</li>
+  <li>Añade el email del cliente (Stripe lo recordará para futuras facturas)</li>
+  <li>Añade los líneas de servicio: descripción, cantidad y precio</li>
+  <li>Configura la fecha de vencimiento y el recordatorio automático</li>
+  <li>Envía y Stripe generará un PDF profesional con enlace de pago</li>
+</ol>
+<h2>Payment Links: Cobra en 2 minutos, sin código</h2>
+<p>Para proyectos puntuales o depósitos, los Payment Links son tu mejor amigo. Crea un enlace de pago con el monto exacto y compártelo por email, WhatsApp o donde quieras. Tu cliente hace clic, introduce su tarjeta, y el dinero llega a tu Stripe en tiempo real.</p>
+<h2>Gestión de suscripciones para servicios recurrentes</h2>
+<p>Si ofreces servicios recurrentes (mantenimiento web, community management mensual, retainer de consultoría), Stripe Subscriptions te permite cobrar automáticamente cada mes sin enviar facturas manualmente. Configura una vez y Stripe se encarga del resto indefinidamente.</p>
+<h2>Comisiones de Stripe en contexto</h2>
+<div style="overflow-x:auto;border-radius:10px;box-shadow:var(--shadow-md);margin:20px 0;">
+<table style="width:100%;border-collapse:collapse;background:var(--white);font-size:0.85rem;">
+  <thead><tr style="background:var(--ink);color:var(--cream);">
+    <th style="padding:12px;">Plataforma</th><th style="padding:12px;">Comisión</th><th style="padding:12px;">Cuota mensual</th><th style="padding:12px;">Conversión de moneda</th>
+  </tr></thead>
+  <tbody>
+    <tr style="border-bottom:1px solid var(--cream-dark);"><td style="padding:12px;font-weight:600;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Stripe</td><td style="padding:12px;text-align:center;">2.9% + $0.30</td><td style="padding:12px;text-align:center;color:var(--teal);">$0</td><td style="padding:12px;text-align:center;">+1.5%</td></tr>
+    <tr style="border-bottom:1px solid var(--cream-dark);background:rgba(245,240,232,0.5);"><td style="padding:12px;font-weight:600;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M9 18V6h5a4 4 0 0 1 0 8H9"/></svg>️ PayPal</td><td style="padding:12px;text-align:center;">3.49% + fija</td><td style="padding:12px;text-align:center;color:var(--teal);">$0</td><td style="padding:12px;text-align:center;">+3-4%</td></tr>
+    <tr><td style="padding:12px;font-weight:600;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg> Wire Transfer</td><td style="padding:12px;text-align:center;">$15-45/transf.</td><td style="padding:12px;text-align:center;color:var(--teal);">$0</td><td style="padding:12px;text-align:center;">Variable</td></tr>
+  </tbody>
+</table>
+</div>
+  <div class="rating-box">
+    <div class="rating-score">9.3</div>
+    <div>
+      <div style="font-size:0.75rem;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.1em;">Puntuación LibreStack</div>
+      <div style="font-size:0.88rem;color:var(--ink-soft);margin-top:4px;">Basada en pruebas reales, precio/valor y usabilidad</div>
+      <div style="color:var(--gold);margin-top:6px;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+    </div>
+  </div>
+  <div class="cta-box">
+    <h3>¿Listo para empezar?</h3>
+    <p>Prueba esta herramienta y lleva tu productividad freelance al siguiente nivel.</p>
+    <a href="#" class="btn btn--gold">Crear cuenta gratuita en Stripe →</a>
+  </div>
+  <div class="author-box">
+    <div class="author-avatar"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+    <div>
+      <div style="font-weight:600;margin-bottom:4px;">Equipo LibreStack</div>
+      <div style="font-size:0.85rem;color:var(--ink-muted);">Analizamos y probamos herramientas para freelancers desde 2024. Cada reseña se basa en uso real.</div>
+    </div>
+  </div>
+  <div class="rel-section">
+    <h2>Artículos relacionados</h2>
+    <div class="rel-grid"><a href="mejores-software-facturacion-freelancers.html" class="related-card">
+            <span class="tag tag--teal" style="margin-bottom:8px;">Facturación</span>
+            <h4>Los 7 mejores softwares de facturación</h4>
+            <span style="font-size:0.8rem;color:var(--teal);font-weight:600;margin-top:8px;display:block;">Leer →</span>
+          </a><a href="hubspot-crm-gratis-freelancers.html" class="related-card">
+            <span class="tag tag--teal" style="margin-bottom:8px;">CRM</span>
+            <h4>HubSpot CRM gratuito</h4>
+            <span style="font-size:0.8rem;color:var(--teal);font-weight:600;margin-top:8px;display:block;">Leer →</span>
+          </a><a href="guia-definitiva-zapier-freelancers.html" class="related-card">
+            <span class="tag tag--teal" style="margin-bottom:8px;">Automatización</span>
+            <h4>Guía definitiva de Zapier</h4>
+            <span style="font-size:0.8rem;color:var(--teal);font-weight:600;margin-top:8px;display:block;">Leer →</span>
+          </a></div>
+  </div>
+</div>
+<script src="shared-nav.js"></script>
+</body>
+</html>

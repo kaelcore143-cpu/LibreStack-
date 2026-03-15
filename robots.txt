@@ -1,0 +1,77 @@
+# LibreStack - robots.txt
+# Última actualización: 15 de marzo de 2025
+
+User-agent: *
+Allow: /
+
+# Páginas de contenido
+Allow: /index.html
+Allow: /contact.html
+Allow: /guia-definitiva-zapier-freelancers.html
+Allow: /notion-vs-asana-comparativa-freelancers.html
+Allow: /mejores-software-facturacion-freelancers.html
+Allow: /hubspot-crm-gratis-freelancers.html
+Allow: /vpn-freelancers-mejores-opciones.html
+Allow: /clickup-review-freelancers.html
+Allow: /calendly-tutorial-freelancers.html
+Allow: /loom-para-freelancers-guia.html
+Allow: /stripe-cobrar-clientes-internacionales.html
+Allow: /figma-para-freelancers-no-disenadores.html
+Allow: /make-automatizacion-avanzada-freelancers.html
+Allow: /airtable-base-datos-freelancers.html
+Allow: /toggl-track-control-tiempo-freelancers.html
+Allow: /slack-comunicacion-freelancers-clientes.html
+
+# Páginas legales
+Allow: /privacy-policy.html
+Allow: /terms-of-service.html
+Allow: /cookie-policy.html
+Allow: /affiliate-disclosure.html
+
+# Bloquear directorios de sistema
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /cache/
+Disallow: /.git/
+
+# Bloquear parámetros UTM (contenido duplicado)
+Disallow: /*?utm_source=
+Disallow: /*?utm_medium=
+Disallow: /*?utm_campaign=
+Disallow: /*?fbclid=
+Disallow: /*?gclid=
+
+# Crawlers específicos
+User-agent: Googlebot
+Allow: /
+Allow: *.css
+Allow: *.js
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: *.jpg
+Allow: *.png
+Allow: *.webp
+Allow: *.svg
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+# Bloquear scrapers agresivos
+User-agent: AhrefsBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: DotBot
+Disallow: /
+
+Sitemap: https://librestack.com/sitemap.xml

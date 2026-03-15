@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LibreStack — Herramientas y Productividad para Freelancers</title>
+  <meta name="description" content="La plataforma referente en habla hispana para freelancers. Reseñas, comparativas y tutoriales de las mejores herramientas de productividad, facturación y gestión de proyectos." />
+  <meta name="keywords" content="herramientas para freelancers, software facturación freelancer, productividad freelancer, trabajo remoto, crm freelancers" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="LibreStack — Herramientas y Productividad" />
+  <meta property="og:description" content="La plataforma referente en habla hispana para freelancers y trabajadores remotos." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://librestack.com/" />
+
+  <!-- DNS Prefetch for external resources -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="preload" href="https://fonts.gstatic.com/s/dmserifdisplay/v15/-nFnOHM81r4j6k0gjAW3mujVU2B2G_VB3vD5.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --cream: #F5F0E8;
+      --cream-dark: #EDE7D9;
+      --ink: #1A1510;
+      --ink-soft: #3D3529;
+      --ink-muted: #7A6F63;
+      --gold: #C8952A;
+      --gold-light: #E8B84B;
+      --gold-pale: #F5E6C2;
+      --teal: #1D6B72;
+      --teal-light: #2A8F99;
+      --teal-pale: #D4EEF0;
+      --rust: #B84C2A;
+      --rust-pale: #FAE8E2;
+      --white: #FFFFFF;
+      --shadow-sm: 0 1px 3px rgba(26,21,16,0.08);
+      --shadow-md: 0 4px 16px rgba(26,21,16,0.10);
+      --shadow-lg: 0 12px 40px rgba(26,21,16,0.14);
+      --radius: 4px;
+      --radius-lg: 12px;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background-color: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== NOISE TEXTURE OVERLAY ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 { font-family: var(--serif); line-height: 1.15; color: var(--ink); }
+    h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+    h3 { font-size: clamp(1.2rem, 2vw, 1.55rem); }
+    h4 { font-size: 1.15rem; }
+    p { color: var(--ink-soft); line-height: 1.75; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .container--narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .tag--gold { background: var(--gold-pale); color: var(--gold); }
+    .tag--teal { background: var(--teal-pale); color: var(--teal); }
+    .tag--rust { background: var(--rust-pale); color: var(--rust); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--sans); font-size: 0.875rem; font-weight: 600;
+      padding: 12px 24px; border-radius: var(--radius);
+      cursor: pointer; border: none; transition: all 0.2s ease;
+      letter-spacing: 0.02em;
+    }
+    .btn--primary {
+      background: var(--ink); color: var(--cream);
+    }
+    .btn--primary:hover { background: var(--ink-soft); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .btn--outline {
+      background: transparent; color: var(--ink);
+      border: 1.5px solid var(--ink);
+    }
+    .btn--outline:hover { background: var(--ink); color: var(--cream); }
+    .btn--gold {
+      background: var(--gold); color: var(--white);
+    }
+    .btn--gold:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,149,42,0.35); }
+
+    /* ===== HEADER / NAV ===== */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,240,232,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26,21,16,0.1);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav__logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--serif); font-size: 1.4rem; color: var(--ink);
+    }
+    .nav__logo-mark {
+      width: 34px; height: 34px; background: var(--ink);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      color: var(--cream); font-size: 1rem;
+    }
+    .nav__links {
+      display: flex; align-items: center; gap: 32px; list-style: none;
+    }
+    .nav__links a {
+      font-size: 0.875rem; font-weight: 500; color: var(--ink-muted);
+      transition: color 0.2s;
+    }
+    .nav__links a:hover { color: var(--ink); }
+    .nav__cta { display: flex; align-items: center; gap: 12px; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--ink);
+      transition: all 0.3s;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none; flex-direction: column; gap: 0;
+      background: var(--cream-dark);
+      border-bottom: 1px solid rgba(26,21,16,0.1);
+      padding: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 14px 24px; font-size: 0.95rem; font-weight: 500;
+      color: var(--ink-soft); border-bottom: 1px solid rgba(26,21,16,0.07);
+      transition: background 0.2s;
+    }
+    .mobile-menu a:hover { background: rgba(26,21,16,0.05); }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 100px 0 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero__bg-line {
+      position: absolute; top: 0; right: 0; width: 45%; height: 100%;
+      background: linear-gradient(135deg, var(--cream-dark) 0%, rgba(200,149,42,0.08) 100%);
+      clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .hero__inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .hero__eyebrow {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
+    }
+    .hero__eyebrow-line { width: 32px; height: 2px; background: var(--gold); }
+    .hero__eyebrow span { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+    .hero h1 { margin-bottom: 20px; }
+    .hero h1 em { font-style: italic; color: var(--teal); }
+    .hero__subtitle {
+      font-size: 1.1rem; color: var(--ink-muted); margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero__stats {
+      display: flex; gap: 32px; margin-top: 48px;
+      padding-top: 32px; border-top: 1px solid rgba(26,21,16,0.1);
+    }
+    .hero__stat-number {
+      font-family: var(--serif); font-size: 1.8rem; color: var(--ink);
+    }
+    .hero__stat-label { font-size: 0.8rem; color: var(--ink-muted); margin-top: 2px; }
+
+    /* Hero Visual */
+    .hero__visual { position: relative; }
+    .hero__card-stack { position: relative; }
+    .hero__card {
+      background: var(--white); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg); padding: 20px 24px;
+      border: 1px solid rgba(26,21,16,0.07);
+    }
+    .hero__card--main { position: relative; z-index: 2; }
+    .hero__card--back {
+      position: absolute; top: -12px; right: -10px; left: 10px;
+      background: var(--cream-dark); z-index: 1;
+      border: 1px solid rgba(26,21,16,0.06);
+    }
+    .card-tool-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid var(--cream);
+    }
+    .card-tool-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .card-tool-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .card-tool-name { font-weight: 600; font-size: 0.9rem; }
+    .card-tool-cat { font-size: 0.75rem; color: var(--ink-muted); }
+    .card-tool-rating {
+      margin-left: auto; font-weight: 700; font-size: 0.85rem; color: var(--gold);
+    }
+    .card-title {
+      font-family: var(--serif); font-size: 1rem; margin-bottom: 14px;
+      padding-bottom: 10px; border-bottom: 1px solid var(--cream);
+      color: var(--ink);
+    }
+
+    /* Floating badges */
+    .hero__badge {
+      position: absolute; background: var(--white);
+      box-shadow: var(--shadow-md); border-radius: 10px;
+      padding: 10px 14px; display: flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; font-weight: 600; color: var(--ink);
+      border: 1px solid rgba(26,21,16,0.06);
+      animation: float 4s ease-in-out infinite;
+    }
+    .hero__badge--1 { top: -20px; left: -30px; animation-delay: 0s; }
+    .hero__badge--2 { bottom: 20px; right: -20px; animation-delay: 2s; }
+    .hero__badge-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .hero__badge-dot--teal { background: var(--teal); }
+    .hero__badge-dot--gold { background: var(--gold); }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* ===== MARQUEE STRIP ===== */
+    .marquee-strip {
+      background: var(--ink); overflow: hidden;
+      padding: 14px 0; display: flex;
+    }
+    .marquee-track {
+      display: flex; align-items: center; gap: 48px;
+      animation: marquee 24s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(245,240,232,0.6);
+      display: flex; align-items: center; gap: 16px; flex-shrink: 0;
+    }
+    .marquee-item::after {
+      content: '✦'; color: var(--gold); font-size: 0.65rem;
+    }
+
+    /* ===== SECTION STYLES ===== */
+    .section { padding: 96px 0; }
+    .section--alt { background: var(--cream-dark); }
+    .section__header { text-align: center; margin-bottom: 64px; }
+    .section__eyebrow {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+    }
+    .section__title { margin-bottom: 16px; }
+    .section__subtitle { color: var(--ink-muted); max-width: 560px; margin: 0 auto; font-size: 1.05rem; }
+
+    /* ===== FEATURED ARTICLES GRID ===== */
+    .articles-grid {
+      display: grid; grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+    .article-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      border: 1px solid rgba(26,21,16,0.07);
+      overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .article-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .article-card--featured { grid-column: span 7; }
+    .article-card--secondary { grid-column: span 5; }
+    .article-card--small { grid-column: span 4; }
+
+    .article-card__image {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover;
+      background: var(--cream-dark); position: relative; overflow: hidden;
+    }
+    .article-card__image-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .article-card__body { padding: 24px; }
+    .article-card__meta {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 12px;
+    }
+    .article-card__date { font-size: 0.78rem; color: var(--ink-muted); }
+    .article-card__title { margin-bottom: 10px; font-size: 1.2rem; }
+    .article-card--small .article-card__title { font-size: 1rem; }
+    .article-card__excerpt { font-size: 0.88rem; color: var(--ink-muted); margin-bottom: 16px; }
+    .article-card__link {
+      font-size: 0.82rem; font-weight: 600; color: var(--teal);
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: gap 0.2s;
+    }
+    .article-card__link:hover { gap: 10px; }
+
+    /* ===== CATEGORIES ===== */
+    .categories-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    }
+    .category-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      border: 1px solid rgba(26,21,16,0.07);
+      padding: 32px 24px; text-align: center;
+      transition: all 0.25s ease; cursor: pointer;
+      position: relative; overflow: hidden;
+    }
+    .category-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--teal); opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .category-card:hover::before { opacity: 0.04; }
+    .category-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--teal-pale); }
+    .category-card__icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin: 0 auto 18px;
+    }
+    .category-card__title { font-size: 1rem; margin-bottom: 6px; }
+    .category-card__count { font-size: 0.8rem; color: var(--ink-muted); }
+
+    /* ===== TOOLS COMPARISON ===== */
+    .tools-table-wrapper { overflow-x: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+    .tools-table {
+      width: 100%; border-collapse: collapse;
+      background: var(--white); font-size: 0.9rem;
+    }
+    .tools-table th {
+      background: var(--ink); color: var(--cream);
+      font-family: var(--sans); font-weight: 600;
+      padding: 14px 20px; text-align: left; font-size: 0.8rem;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .tools-table th:first-child { border-radius: var(--radius-lg) 0 0 0; }
+    .tools-table th:last-child { border-radius: 0 var(--radius-lg) 0 0; }
+    .tools-table td {
+      padding: 14px 20px; border-bottom: 1px solid var(--cream-dark);
+      vertical-align: middle;
+    }
+    .tools-table tr:last-child td { border-bottom: none; }
+    .tools-table tr:hover td { background: rgba(29,107,114,0.03); }
+    .tools-table .tool-name { font-weight: 600; display: flex; align-items: center; gap: 10px; }
+    .tool-emoji { font-size: 1.2rem; }
+    .rating-stars { color: var(--gold); letter-spacing: -1px; font-size: 0.9rem; }
+    .icon { display: inline-block; width: 1em; height: 1em; vertical-align: middle; }
+    .badge-free { background: var(--teal-pale); color: var(--teal); font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 3px; }
+    .badge-paid { background: var(--gold-pale); color: var(--gold); font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 3px; }
+    .badge-freemium { background: var(--rust-pale); color: var(--rust); font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 3px; }
+    .icon-star { color: var(--gold); }
+    .icon-check { color: var(--teal); stroke-width: 2.5; }
+    .icon-cross { color: #ccc; stroke-width: 2.5; }
+
+    /* ===== NEWSLETTER ===== */
+    .newsletter {
+      background: var(--ink); color: var(--cream);
+      border-radius: 20px; padding: 64px 56px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: center; position: relative; overflow: hidden;
+    }
+    .newsletter::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,149,42,0.15) 0%, transparent 70%);
+    }
+    .newsletter__eyebrow {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .newsletter__title { color: var(--cream); margin-bottom: 14px; }
+    .newsletter__subtitle { color: rgba(245,240,232,0.65); font-size: 1rem; }
+    .newsletter__form { display: flex; flex-direction: column; gap: 12px; }
+    .newsletter__input-row { display: flex; gap: 10px; }
+    .newsletter__input {
+      flex: 1; padding: 13px 16px;
+      background: rgba(245,240,232,0.1);
+      border: 1.5px solid rgba(245,240,232,0.15);
+      border-radius: var(--radius); color: var(--cream);
+      font-family: var(--sans); font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .newsletter__input::placeholder { color: rgba(245,240,232,0.4); }
+    .newsletter__input:focus { outline: none; border-color: var(--gold); }
+    .newsletter__note { font-size: 0.76rem; color: rgba(245,240,232,0.4); }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      border: 1px solid rgba(26,21,16,0.07);
+      padding: 28px; position: relative;
+    }
+    .testimonial-card::before {
+      content: '"'; position: absolute; top: 16px; right: 22px;
+      font-family: var(--serif); font-size: 4rem; color: var(--cream-dark);
+      line-height: 1;
+    }
+    .testimonial-card__text {
+      font-size: 0.93rem; color: var(--ink-soft); line-height: 1.7;
+      margin-bottom: 20px; font-style: italic;
+    }
+    .testimonial-card__author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-card__avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--cream-dark); display: flex; align-items: center;
+      justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+    }
+    .testimonial-card__name { font-weight: 600; font-size: 0.9rem; }
+    .testimonial-card__role { font-size: 0.78rem; color: var(--ink-muted); }
+    .testimonial-card__stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 2px; }
+
+    /* ===== KPIs SECTION ===== */
+    .kpis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .kpi-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      border: 1px solid rgba(26,21,16,0.07);
+      padding: 32px 24px; text-align: center;
+    }
+    .kpi-card__number {
+      font-family: var(--serif); font-size: 2.4rem; color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .kpi-card__number span { color: var(--gold); }
+    .kpi-card__label { font-size: 0.85rem; color: var(--ink-muted); }
+    .kpi-card__icon { font-size: 1.5rem; margin-bottom: 12px; }
+
+    /* ===== RECENT ARTICLES LIST ===== */
+    .recent-list { display: flex; flex-direction: column; gap: 0; }
+    .recent-item {
+      display: flex; align-items: center; gap: 20px;
+      padding: 20px 0; border-bottom: 1px solid rgba(26,21,16,0.08);
+    }
+    .recent-item:last-child { border-bottom: none; }
+    .recent-item__num {
+      font-family: var(--serif); font-size: 1.4rem; color: var(--cream-dark);
+      font-weight: 400; flex-shrink: 0; width: 32px; text-align: center;
+    }
+    .recent-item__content { flex: 1; }
+    .recent-item__title { font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+    .recent-item__meta { font-size: 0.78rem; color: var(--ink-muted); }
+    .recent-item__arrow {
+      color: var(--ink-muted); font-size: 1rem; flex-shrink: 0;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .recent-item:hover .recent-item__arrow { color: var(--teal); transform: translateX(4px); }
+    .recent-item:hover .recent-item__title { color: var(--teal); }
+    .recent-item { cursor: pointer; transition: all 0.2s; }
+
+    /* ===== SIDEBAR WIDGET ===== */
+    .sidebar-widget {
+      background: var(--white); border-radius: var(--radius-lg);
+      border: 1px solid rgba(26,21,16,0.07);
+      padding: 24px; margin-bottom: 20px;
+    }
+    .sidebar-widget__title {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--ink-muted);
+      margin-bottom: 18px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    /* ===== BLOG LAYOUT ===== */
+    .blog-layout { display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: start; }
+
+    /* ===== PROGRESS BAR ===== */
+    .progress-bar { height: 3px; background: var(--cream-dark); border-radius: 2px; overflow: hidden; margin-bottom: 10px; }
+    .progress-fill { height: 100%; border-radius: 2px; background: var(--gold); }
+
+    /* ===== FOOTER ===== */
+    .footer { background: var(--ink); color: rgba(245,240,232,0.7); }
+    .footer__main {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; padding: 64px 0 48px;
+    }
+    .footer__brand-desc { font-size: 0.88rem; line-height: 1.7; margin: 16px 0 24px; color: rgba(245,240,232,0.55); }
+    .footer__social { display: flex; gap: 10px; }
+    .footer__social-link {
+      width: 36px; height: 36px; background: rgba(245,240,232,0.08);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; transition: background 0.2s;
+    }
+    .footer__social-link:hover { background: rgba(245,240,232,0.15); }
+    .footer__col-title {
+      font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(245,240,232,0.4); margin-bottom: 20px;
+    }
+    .footer__links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer__links a {
+      font-size: 0.875rem; color: rgba(245,240,232,0.6);
+      transition: color 0.2s;
+    }
+    .footer__links a:hover { color: var(--cream); }
+    .footer__bottom {
+      border-top: 1px solid rgba(245,240,232,0.1);
+      padding: 22px 0; display: flex;
+      justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: rgba(245,240,232,0.4);
+    }
+    .footer__bottom-links { display: flex; gap: 20px; }
+    .footer__bottom-links a { color: rgba(245,240,232,0.4); transition: color 0.2s; }
+    .footer__bottom-links a:hover { color: rgba(245,240,232,0.7); }
+
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; color: var(--ink-muted);
+      padding: 16px 0; margin-bottom: 8px;
+    }
+    .breadcrumb a { color: var(--ink-muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb__sep { color: rgba(26,21,16,0.3); }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      width: 44px; height: 44px; background: var(--ink);
+      border-radius: 50%; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cream); font-size: 1rem; box-shadow: var(--shadow-md);
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+    .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .scroll-top:hover { background: var(--teal); }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero__inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero__visual { order: -1; max-width: 520px; }
+      .hero__bg-line { display: none; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .kpis-grid { grid-template-columns: repeat(2, 1fr); }
+      .article-card--featured, .article-card--secondary { grid-column: span 12; }
+      .article-card--small { grid-column: span 6; }
+      .newsletter { grid-template-columns: 1fr; padding: 40px 32px; }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .blog-layout { grid-template-columns: 1fr; }
+      .footer__main { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links, .nav__cta .btn--outline { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 60px 0 60px; }
+      .section { padding: 64px 0; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .kpis-grid { grid-template-columns: repeat(2, 1fr); }
+      .article-card--small { grid-column: span 12; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .newsletter__input-row { flex-direction: column; }
+      .footer__main { grid-template-columns: 1fr; }
+      .footer__bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .hero__stats { flex-wrap: wrap; gap: 20px; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 480px) {
+      .categories-grid { grid-template-columns: 1fr 1fr; }
+      .kpis-grid { grid-template-columns: 1fr 1fr; }
+      .hero__actions { flex-direction: column; }
+      .hero__badge--1 { display: none; }
+    }
+
+    /* ===== LOADING BAR ===== */
+    .page-loader {
+      position: fixed; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--cream-dark); z-index: 9999;
+    }
+    .page-loader__fill {
+      height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--teal));
+      transition: width 0.4s ease;
+    }
+  </style>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "LibreStack",
+    "url": "https://librestack.com",
+    "description": "La plataforma referente en habla hispana para herramientas y productividad para freelancers y trabajadores remotos.",
+    "inLanguage": "es",
+    "publisher": {
+      "@type": "Organization",
+      "name": "LibreStack",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://librestack.com/logo.png"
+      }
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+<!-- Page Loader -->
+<div class="page-loader" id="pageLoader">
+  <div class="page-loader__fill" id="loaderFill"></div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="nav__logo" aria-label="LibreStack inicio">
+        <div class="nav__logo-mark">L</div>
+        LibreStack
+      </a>
+
+      <ul class="nav__links" role="navigation" aria-label="Navegación principal">
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#herramientas">Herramientas</a></li>
+        <li><a href="#guias">Guías</a></li>
+        <li><a href="#comparativas">Comparativas</a></li>
+        <li><a href="#recursos">Recursos</a></li>
+      </ul>
+
+      <div class="nav__cta">
+        <a href="#newsletter" class="btn btn--outline" style="padding: 9px 18px; font-size: 0.8rem;">Newsletter</a>
+        <a href="#herramientas" class="btn btn--primary" style="padding: 9px 18px; font-size: 0.8rem;">Explorar →</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menú móvil">
+    <a href="#blog">Blog</a>
+    <a href="#herramientas">Herramientas</a>
+    <a href="#guias">Guías y Tutoriales</a>
+    <a href="#comparativas">Comparativas</a>
+    <a href="#recursos">Recursos Gratis</a>
+    <a href="#newsletter">Suscribirse al Newsletter</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="inicio" aria-label="Sección principal">
+  <div class="hero__bg-line" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <div class="hero__eyebrow">
+          <div class="hero__eyebrow-line"></div>
+          <span>La plataforma #1 para freelancers hispanos</span>
+        </div>
+        <h1>Más productivo.<br><em>Mejor herramientas.</em><br>Más ingresos.</h1>
+        <p class="hero__subtitle">
+          Descubre, compara y domina las mejores herramientas para freelancers y trabajadores remotos. Reseñas honestas, tutoriales paso a paso y comparativas profundas.
+        </p>
+        <div class="hero__actions">
+          <a href="#herramientas" class="btn btn--primary">Ver herramientas →</a>
+          <a href="#guias" class="btn btn--outline">Guías gratuitas</a>
+        </div>
+        <div class="hero__stats">
+          <div>
+            <div class="hero__stat-number">50K+</div>
+            <div class="hero__stat-label">Freelancers al mes</div>
+          </div>
+          <div>
+            <div class="hero__stat-number">120+</div>
+            <div class="hero__stat-label">Herramientas analizadas</div>
+          </div>
+          <div>
+            <div class="hero__stat-number">4.8<svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <div class="hero__stat-label">Valoración media</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__badge hero__badge--1">
+          <div class="hero__badge-dot hero__badge-dot--teal"></div>
+          Actualizado semanalmente
+        </div>
+        <div class="hero__card-stack">
+          <div class="hero__card hero__card--back"></div>
+          <div class="hero__card hero__card--main">
+            <div class="card-title"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="11"/><path d="M7 4H4a2 2 0 0 0-2 2v2a6 6 0 0 0 6 6"/><path d="M17 4h3a2 2 0 0 1 2 2v2a6 6 0 0 1-6 6"/><rect x="6" y="2" width="12" height="9" rx="1"/></svg> Top Herramientas 2025</div>
+            <div class="card-tool-row">
+              <div class="card-tool-icon" style="background:#f0faf5;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+              <div>
+                <div class="card-tool-name">Zapier</div>
+                <div class="card-tool-cat">Automatización</div>
+              </div>
+              <div class="card-tool-rating">9.4</div>
+            </div>
+            <div class="card-tool-row">
+              <div class="card-tool-icon" style="background:#f0f4ff;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
+              <div>
+                <div class="card-tool-name">Notion</div>
+                <div class="card-tool-cat">Productividad</div>
+              </div>
+              <div class="card-tool-rating">9.1</div>
+            </div>
+            <div class="card-tool-row">
+              <div class="card-tool-icon" style="background:#fff5f0;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+              <div>
+                <div class="card-tool-name">FreshBooks</div>
+                <div class="card-tool-cat">Facturación</div>
+              </div>
+              <div class="card-tool-rating">8.8</div>
+            </div>
+            <div class="card-tool-row">
+              <div class="card-tool-icon" style="background:#f5f0ff;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div>
+                <div class="card-tool-name">HubSpot CRM</div>
+                <div class="card-tool-cat">CRM</div>
+              </div>
+              <div class="card-tool-rating">8.6</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__badge hero__badge--2">
+          <div class="hero__badge-dot hero__badge-dot--gold"></div>
+          100% Reseñas honestas
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Zapier</span>
+    <span class="marquee-item">Notion</span>
+    <span class="marquee-item">Asana</span>
+    <span class="marquee-item">HubSpot</span>
+    <span class="marquee-item">FreshBooks</span>
+    <span class="marquee-item">Monday.com</span>
+    <span class="marquee-item">Slack</span>
+    <span class="marquee-item">Trello</span>
+    <span class="marquee-item">ClickUp</span>
+    <span class="marquee-item">Stripe</span>
+    <span class="marquee-item">Calendly</span>
+    <span class="marquee-item">Loom</span>
+    <span class="marquee-item">Figma</span>
+    <span class="marquee-item">Airtable</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">Zapier</span>
+    <span class="marquee-item">Notion</span>
+    <span class="marquee-item">Asana</span>
+    <span class="marquee-item">HubSpot</span>
+    <span class="marquee-item">FreshBooks</span>
+    <span class="marquee-item">Monday.com</span>
+    <span class="marquee-item">Slack</span>
+    <span class="marquee-item">Trello</span>
+    <span class="marquee-item">ClickUp</span>
+    <span class="marquee-item">Stripe</span>
+    <span class="marquee-item">Calendly</span>
+    <span class="marquee-item">Loom</span>
+    <span class="marquee-item">Figma</span>
+    <span class="marquee-item">Airtable</span>
+  </div>
+</div>
+
+<!-- ===== CATEGORIES ===== -->
+<section class="section" id="herramientas" aria-label="Categorías de herramientas">
+  <div class="container">
+    <div class="section__header">
+      <div class="section__eyebrow">Explora por categoría</div>
+      <h2 class="section__title">Herramientas para cada necesidad</h2>
+      <p class="section__subtitle">Desde facturación hasta automatización, cubrimos todas las herramientas que necesita tu negocio freelance.</p>
+    </div>
+
+    <div class="categories-grid" role="list">
+      <article class="category-card fade-up" role="listitem">
+        <div class="category-card__icon" style="background: var(--gold-pale);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+        <h3 class="category-card__title">Facturación</h3>
+        <p class="category-card__count">12 herramientas analizadas</p>
+      </article>
+      <article class="category-card fade-up" role="listitem">
+        <div class="category-card__icon" style="background: var(--teal-pale);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h3 class="category-card__title">Automatización</h3>
+        <p class="category-card__count">8 herramientas analizadas</p>
+      </article>
+      <article class="category-card fade-up" role="listitem">
+        <div class="category-card__icon" style="background: var(--rust-pale);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
+        <h3 class="category-card__title">Productividad</h3>
+        <p class="category-card__count">18 herramientas analizadas</p>
+      </article>
+      <article class="category-card fade-up" role="listitem">
+        <div class="category-card__icon" style="background: #f0f4ff;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3 class="category-card__title">CRM</h3>
+        <p class="category-card__count">9 herramientas analizadas</p>
+      </article>
+      <article class="category-card fade-up" role="listitem">
+        <div class="category-card__icon" style="background: #f0faf5;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3 class="category-card__title">Seguridad</h3>
+        <p class="category-card__count">6 herramientas analizadas</p>
+      </article>
+      <article class="category-card fade-up" role="listitem">
+        <div class="category-card__icon" style="background: #fff5f0;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3 class="category-card__title">Comunicación</h3>
+        <p class="category-card__count">11 herramientas analizadas</p>
+      </article>
+      <article class="category-card fade-up" role="listitem">
+        <div class="category-card__icon" style="background: var(--gold-pale);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h3 class="category-card__title">Analytics</h3>
+        <p class="category-card__count">7 herramientas analizadas</p>
+      </article>
+      <article class="category-card fade-up" role="listitem">
+        <div class="category-card__icon" style="background: var(--teal-pale);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20c-2.8 0-4-1.5-4-3 0-2 2-3.5 2-5.5 0-1.5-1-2.5-2.5-2.5S5 12 5 12"/><circle cx="12" cy="7" r="1" fill="currentColor"/><circle cx="17" cy="11" r="1" fill="currentColor"/><circle cx="15" cy="16" r="1" fill="currentColor"/></svg></div>
+        <h3 class="category-card__title">Diseño</h3>
+        <p class="category-card__count">14 herramientas analizadas</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KPIs ===== -->
+<section class="section section--alt" aria-label="Datos del mercado freelance">
+  <div class="container">
+    <div class="section__header">
+      <div class="section__eyebrow">El mercado freelance en cifras</div>
+      <h2 class="section__title">Por qué ser freelancer es la oportunidad del siglo</h2>
+    </div>
+    <div class="kpis-grid">
+      <div class="kpi-card fade-up">
+        <div class="kpi-card__icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="kpi-card__number">86<span>.5M</span></div>
+        <div class="kpi-card__label">Freelancers proyectados para 2027</div>
+      </div>
+      <div class="kpi-card fade-up">
+        <div class="kpi-card__icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="kpi-card__number">$14<span>.17B</span></div>
+        <div class="kpi-card__label">Mercado freelance para 2029</div>
+      </div>
+      <div class="kpi-card fade-up">
+        <div class="kpi-card__icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="kpi-card__number">17<span>%</span></div>
+        <div class="kpi-card__label">Crecimiento anual del sector</div>
+      </div>
+      <div class="kpi-card fade-up">
+        <div class="kpi-card__icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <div class="kpi-card__number">$18<span>/CPC</span></div>
+        <div class="kpi-card__label">CPC máximo en nicho tech/SaaS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURED ARTICLES ===== -->
+<section class="section" id="blog" aria-label="Artículos destacados">
+  <div class="container">
+    <div class="section__header">
+      <div class="section__eyebrow">Últimos artículos</div>
+      <h2 class="section__title">Contenido que te hace crecer</h2>
+      <p class="section__subtitle">Reseñas honestas, comparativas detalladas y tutoriales paso a paso escritos por y para freelancers.</p>
+    </div>
+
+    <div class="articles-grid">
+      <!-- Featured -->
+      <article class="article-card article-card--featured fade-up">
+        <div class="article-card__image">
+          <div class="article-card__image-placeholder" style="background: linear-gradient(135deg, var(--teal-pale), var(--gold-pale));"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        </div>
+        <div class="article-card__body">
+          <div class="article-card__meta">
+            <span class="tag tag--teal">Automatización</span>
+            <span class="article-card__date">· 15 Mar 2025 · 8 min lectura</span>
+          </div>
+          <h3 class="article-card__title">Guía definitiva de Zapier para freelancers: 15 automatizaciones que te ahorrarán 10 horas a la semana</h3>
+          <p class="article-card__excerpt">Descubre cómo los mejores freelancers utilizan Zapier para automatizar tareas repetitivas y enfocar su tiempo en lo que realmente importa: el trabajo de alto valor.</p>
+          <a href="guia-definitiva-zapier-freelancers.html" class="article-card__link">Leer artículo →</a>
+        </div>
+      </article>
+
+      <!-- Secondary -->
+      <article class="article-card article-card--secondary fade-up">
+        <div class="article-card__image">
+          <div class="article-card__image-placeholder" style="background: linear-gradient(135deg, var(--rust-pale), var(--gold-pale));"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
+        </div>
+        <div class="article-card__body">
+          <div class="article-card__meta">
+            <span class="tag tag--gold">Productividad</span>
+            <span class="article-card__date">· 12 Mar 2025</span>
+          </div>
+          <h3 class="article-card__title">Notion vs Asana: ¿Cuál es mejor para gestionar tus proyectos como freelancer?</h3>
+          <p class="article-card__excerpt">Comparativa exhaustiva con casos de uso reales, precios y veredicto final.</p>
+          <a href="notion-vs-asana-comparativa-freelancers.html" class="article-card__link">Leer comparativa →</a>
+        </div>
+      </article>
+
+      <!-- Small cards -->
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--rust">Facturación</span>
+          </div>
+          <h3 class="article-card__title">Los 7 mejores softwares de facturación para freelancers en 2025</h3>
+          <p class="article-card__excerpt">FreshBooks, Wave, Holded y más. Cuál elegir según tu volumen.</p>
+          <a href="mejores-software-facturacion-freelancers.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--teal">CRM</span>
+          </div>
+          <h3 class="article-card__title">HubSpot CRM gratuito: Todo lo que necesita un freelancer para gestionar clientes</h3>
+          <p class="article-card__excerpt">Tutorial completo de configuración y flujos de trabajo para solo 1 persona.</p>
+          <a href="hubspot-crm-gratis-freelancers.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--gold">Seguridad</span>
+          </div>
+          <h3 class="article-card__title">VPN para freelancers: Por qué necesitas una y cuál elegir en 2025</h3>
+          <p class="article-card__excerpt">Protege tu trabajo y datos de clientes con las mejores VPNs del mercado.</p>
+          <a href="vpn-freelancers-mejores-opciones.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+
+      <!-- Additional 8 article cards -->
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--teal">Productividad</span>
+          </div>
+          <h3 class="article-card__title">ClickUp: La herramienta todo-en-uno para freelancers ambiciosos</h3>
+          <p class="article-card__excerpt">Gestión de proyectos, documentos, chat y tiempo en una sola plataforma.</p>
+          <a href="clickup-review-freelancers.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--gold">Productividad</span>
+          </div>
+          <h3 class="article-card__title">Calendly para freelancers: Agenda clientes sin intercambiar emails</h3>
+          <p class="article-card__excerpt">Configura tu disponibilidad y deja que los clientes reserven automáticamente.</p>
+          <a href="calendly-tutorial-freelancers.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--rust">Comunicación</span>
+          </div>
+          <h3 class="article-card__title">Loom: Mensajes de video para comunicarte mejor con clientes</h3>
+          <p class="article-card__excerpt">Graba tu pantalla y cámara para explicar proyectos de forma clara y rápida.</p>
+          <a href="loom-para-freelancers-guia.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--teal">Pagos</span>
+          </div>
+          <h3 class="article-card__title">Stripe: Cómo cobrar a clientes internacionales sin complicaciones</h3>
+          <p class="article-card__excerpt">Acepta pagos de cualquier parte del mundo con las tarifas más competitivas.</p>
+          <a href="stripe-cobrar-clientes-internacionales.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--gold">Diseño</span>
+          </div>
+          <h3 class="article-card__title">Figma para freelancers no diseñadores: Guía práctica</h3>
+          <p class="article-card__excerpt">Crea wireframes, mockups y prototipos sin conocimientos avanzados de diseño.</p>
+          <a href="figma-para-freelancers-no-disenadores.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--teal">Automatización</span>
+          </div>
+          <h3 class="article-card__title">Make (Integromat): Automatización avanzada para freelancers</h3>
+          <p class="article-card__excerpt">Conecta tus apps con visual workflows más potentes que Zapier.</p>
+          <a href="make-automatizacion-avanzada-freelancers.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--rust">Bases de Datos</span>
+          </div>
+          <h3 class="article-card__title">Airtable: El Excel reinventado para freelancers modernos</h3>
+          <p class="article-card__excerpt">Organiza datos, proyectos y clientes en bases de datos visuales.</p>
+          <a href="airtable-base-datos-freelancers.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--gold">Productividad</span>
+          </div>
+          <h3 class="article-card__title">Toggl Track: Controla tu tiempo y factura cada minuto</h3>
+          <p class="article-card__excerpt">Seguimiento de tiempo sencillo con reportes para mejorar tu rentabilidad.</p>
+          <a href="toggl-track-control-tiempo-freelancers.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="article-card article-card--small fade-up">
+        <div class="article-card__body" style="padding-top: 28px;">
+          <div class="article-card__meta">
+            <span class="tag tag--teal">Comunicación</span>
+          </div>
+          <h3 class="article-card__title">Slack: Comunicación efectiva con clientes y equipos remotos</h3>
+          <p class="article-card__excerpt">Canales organizados, integraciones y mensajes directos en una sola app.</p>
+          <a href="slack-comunicacion-freelancers-clientes.html" class="article-card__link">Leer más →</a>
+        </div>
+      </article>
+    </div>
+
+    <div style="text-align:center; margin-top: 40px;">
+      <a href="#" class="btn btn--outline">Ver todos los artículos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOOLS COMPARISON TABLE ===== -->
+<section class="section section--alt" id="comparativas" aria-label="Comparativa de herramientas">
+  <div class="container">
+    <div class="section__header">
+      <div class="section__eyebrow">Comparativa de herramientas</div>
+      <h2 class="section__title">Las mejores herramientas de productividad 2025</h2>
+      <p class="section__subtitle">Comparativa actualizada con puntuaciones, precios y características clave.</p>
+    </div>
+
+    <div class="tools-table-wrapper fade-up">
+      <table class="tools-table" role="table" aria-label="Comparativa de herramientas de productividad">
+        <thead>
+          <tr>
+            <th scope="col">Herramienta</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Plan gratuito</th>
+            <th scope="col">App móvil</th>
+            <th scope="col">Integraciones</th>
+            <th scope="col">Puntuación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tool-name"><span class="tool-emoji"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span> Zapier</span></td>
+            <td>Automatización</td>
+            <td><span class="badge-freemium">Freemium</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td>6,000+</td>
+            <td><span class="rating-stars">★★★★★</span> 9.4</td>
+          </tr>
+          <tr>
+            <td><span class="tool-name"><span class="tool-emoji"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></span> Notion</span></td>
+            <td>Productividad</td>
+            <td><span class="badge-freemium">Freemium</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td>100+</td>
+            <td><span class="rating-stars">★★★★★</span> 9.1</td>
+          </tr>
+          <tr>
+            <td><span class="tool-name"><span class="tool-emoji"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span> FreshBooks</span></td>
+            <td>Facturación</td>
+            <td><span class="badge-paid">De pago</span></td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="check">✓</span></td>
+            <td>200+</td>
+            <td><span class="rating-stars">★★★★★</span> 8.8</td>
+          </tr>
+          <tr>
+            <td><span class="tool-name"><span class="tool-emoji"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> HubSpot CRM</span></td>
+            <td>CRM</td>
+            <td><span class="badge-freemium">Freemium</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td>1,000+</td>
+            <td><span class="rating-stars">★★★★½</span> 8.6</td>
+          </tr>
+          <tr>
+            <td><span class="tool-name"><span class="tool-emoji"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span> Asana</span></td>
+            <td>Gestión de proyectos</td>
+            <td><span class="badge-freemium">Freemium</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td>300+</td>
+            <td><span class="rating-stars">★★★★½</span> 8.5</td>
+          </tr>
+          <tr>
+            <td><span class="tool-name"><span class="tool-emoji"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s2-4 5-4 5 4 5 4 2-4 5-4 5 4 5 4"/><path d="M2 18s2-4 5-4 5 4 5 4 2-4 5-4 5 4 5 4"/><path d="M2 6s2-4 5-4 5 4 5 4 2-4 5-4 5 4 5 4"/></svg></span> Wave</span></td>
+            <td>Facturación</td>
+            <td><span class="badge-free">Gratis</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td>20+</td>
+            <td><span class="rating-stars">★★★★</span> 8.2</td>
+          </tr>
+          <tr>
+            <td><span class="tool-name"><span class="tool-emoji"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span> ClickUp</span></td>
+            <td>Productividad</td>
+            <td><span class="badge-freemium">Freemium</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td>1,000+</td>
+            <td><span class="rating-stars">★★★★</span> 8.0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align:center; margin-top: 32px;">
+      <a href="#" class="btn btn--primary">Ver comparativa completa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOG + SIDEBAR ===== -->
+<section class="section" id="guias" aria-label="Guías recientes y recursos">
+  <div class="container">
+    <div class="blog-layout">
+      <div>
+        <div class="section__eyebrow" style="margin-bottom:16px;">Guías y tutoriales</div>
+        <h2 style="margin-bottom: 36px;">Aprende a dominar<br>tus herramientas</h2>
+
+        <div class="recent-list" role="list">
+          <div class="recent-item" role="listitem" tabindex="0" onclick="location.href='guia-definitiva-zapier-freelancers.html'">
+            <div class="recent-item__num">01</div>
+            <div class="recent-item__content">
+              <div class="recent-item__title">Cómo configurar Zapier desde cero: Tutorial completo para principiantes</div>
+              <div class="recent-item__meta">Tutorial · 18 min lectura · Automatización</div>
+            </div>
+            <div class="recent-item__arrow">→</div>
+          </div>
+          <div class="recent-item" role="listitem" tabindex="0" onclick="location.href='notion-vs-asana-comparativa-freelancers.html'">
+            <div class="recent-item__num">02</div>
+            <div class="recent-item__content">
+              <div class="recent-item__title">Guía definitiva: Cómo organizar todos tus proyectos en Notion</div>
+              <div class="recent-item__meta">Guía · 25 min lectura · Productividad</div>
+            </div>
+            <div class="recent-item__arrow">→</div>
+          </div>
+          <div class="recent-item" role="listitem" tabindex="0" onclick="location.href='make-automatizacion-avanzada-freelancers.html'">
+            <div class="recent-item__num">03</div>
+            <div class="recent-item__content">
+              <div class="recent-item__title">Make (Integromat): Automatización avanzada para freelancers</div>
+              <div class="recent-item__meta">Tutorial · 15 min lectura · Automatización</div>
+            </div>
+            <div class="recent-item__arrow">→</div>
+          </div>
+          <div class="recent-item" role="listitem" tabindex="0" onclick="location.href='hubspot-crm-gratis-freelancers.html'">
+            <div class="recent-item__num">04</div>
+            <div class="recent-item__content">
+              <div class="recent-item__title">Setup completo de HubSpot CRM para freelancers</div>
+              <div class="recent-item__meta">Guía · 20 min lectura · CRM</div>
+            </div>
+            <div class="recent-item__arrow">→</div>
+          </div>
+          <div class="recent-item" role="listitem" tabindex="0" onclick="location.href='mejores-software-facturacion-freelancers.html'">
+            <div class="recent-item__num">05</div>
+            <div class="recent-item__content">
+              <div class="recent-item__title">Los mejores softwares de facturación para freelancers 2025</div>
+              <div class="recent-item__meta">Guía · 22 min lectura · Facturación</div>
+            </div>
+            <div class="recent-item__arrow">→</div>
+          </div>
+          <div class="recent-item" role="listitem" tabindex="0" onclick="location.href='vpn-freelancers-mejores-opciones.html'">
+            <div class="recent-item__num">06</div>
+            <div class="recent-item__content">
+              <div class="recent-item__title">VPN para freelancers: Protege tu trabajo y datos de clientes</div>
+              <div class="recent-item__meta">Guía · 12 min lectura · Seguridad</div>
+            </div>
+            <div class="recent-item__arrow">→</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside aria-label="Recursos adicionales">
+        <div class="sidebar-widget">
+          <div class="sidebar-widget__title">Herramientas populares esta semana</div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span style="font-size:0.85rem; font-weight:600;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Zapier</span>
+                <span style="font-size:0.8rem; color:var(--gold); font-weight:600;">9.4</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:94%;"></div></div>
+              <span style="font-size:0.75rem; color:var(--ink-muted);">Automatización</span>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span style="font-size:0.85rem; font-weight:600;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg> Notion</span>
+                <span style="font-size:0.8rem; color:var(--gold); font-weight:600;">9.1</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:91%;"></div></div>
+              <span style="font-size:0.75rem; color:var(--ink-muted);">Productividad</span>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span style="font-size:0.85rem; font-weight:600;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> FreshBooks</span>
+                <span style="font-size:0.8rem; color:var(--gold); font-weight:600;">8.8</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:88%;"></div></div>
+              <span style="font-size:0.75rem; color:var(--ink-muted);">Facturación</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="sidebar-widget__title">Recursos gratuitos</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="#" style="display:flex; align-items:center; gap:10px; padding:10px; border-radius:8px; background:var(--cream); transition:background 0.2s;" onmouseover="this.style.background='var(--cream-dark)'" onmouseout="this.style.background='var(--cream)'">
+              <span style="font-size:1.2rem;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+              <div>
+                <div style="font-size:0.85rem; font-weight:600;">Plantilla de propuesta freelance</div>
+                <div style="font-size:0.75rem; color:var(--ink-muted);">Descarga gratuita</div>
+              </div>
+            </a>
+            <a href="#" style="display:flex; align-items:center; gap:10px; padding:10px; border-radius:8px; background:var(--cream); transition:background 0.2s;" onmouseover="this.style.background='var(--cream-dark)'" onmouseout="this.style.background='var(--cream)'">
+              <span style="font-size:1.2rem;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+              <div>
+                <div style="font-size:0.85rem; font-weight:600;">Calculadora de tarifa por hora</div>
+                <div style="font-size:0.75rem; color:var(--ink-muted);">Herramienta online</div>
+              </div>
+            </a>
+            <a href="#" style="display:flex; align-items:center; gap:10px; padding:10px; border-radius:8px; background:var(--cream); transition:background 0.2s;" onmouseover="this.style.background='var(--cream-dark)'" onmouseout="this.style.background='var(--cream)'">
+              <span style="font-size:1.2rem;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+              <div>
+                <div style="font-size:0.85rem; font-weight:600;">Checklist de onboarding de cliente</div>
+                <div style="font-size:0.75rem; color:var(--ink-muted);">Descarga gratuita</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="sidebar-widget" style="background: var(--teal); border-color: var(--teal);">
+          <div style="font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:12px;">Newsletter semanal</div>
+          <h4 style="color:white; margin-bottom:8px; font-size:1.1rem;">Las mejores herramientas, directo a tu inbox</h4>
+          <p style="font-size:0.82rem; color:rgba(255,255,255,0.75); margin-bottom:16px;">Únete a 8,000+ freelancers que reciben nuestra selección semanal.</p>
+          <input type="email" placeholder="tu@email.com" style="width:100%; padding:10px 14px; border-radius:4px; border:none; font-family:var(--sans); font-size:0.85rem; margin-bottom:10px;" />
+          <button class="btn btn--gold" style="width:100%; justify-content:center;">Suscribirme gratis</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section section--alt" aria-label="Testimonios de usuarios">
+  <div class="container">
+    <div class="section__header">
+      <div class="section__eyebrow">Lo que dicen nuestros lectores</div>
+      <h2 class="section__title">Freelancers que confían en nosotros</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-card__text">
+          "Gracias a LibreStack encontré Zapier y empecé a automatizar mis onboardings de cliente. Ahora ahorro más de 8 horas a la semana que dedico a conseguir nuevos proyectos."
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div>
+            <div class="testimonial-card__stars"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <div class="testimonial-card__name">María García</div>
+            <div class="testimonial-card__role">Desarrolladora Web Freelance · Madrid</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-card__text">
+          "Las comparativas son increíblemente honestas. Me ayudaron a elegir FreshBooks en vez de perder tiempo probando 5 herramientas diferentes. El ROI fue inmediato."
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div>
+            <div class="testimonial-card__stars"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <div class="testimonial-card__name">Carlos Mendoza</div>
+            <div class="testimonial-card__role">Diseñador UX · México DF</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-card__text">
+          "El tutorial de Notion cambió completamente cómo organizo mis proyectos. Por fin tengo un sistema que funciona para llevar 6-8 clientes simultáneamente sin perder la cabeza."
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div>
+            <div class="testimonial-card__stars"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <div class="testimonial-card__name">Ana Rodríguez</div>
+            <div class="testimonial-card__role">Consultora de Marketing · Buenos Aires</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="section" id="newsletter" aria-label="Suscripción al newsletter">
+  <div class="container">
+    <div class="newsletter">
+      <div>
+        <div class="newsletter__eyebrow">Newsletter gratuito</div>
+        <h2 class="newsletter__title">Sé el primero en conocer las mejores herramientas</h2>
+        <p class="newsletter__subtitle">Cada semana: 1 herramienta analizada, 3 tips de productividad, 1 recurso gratuito. Sin spam. Siempre gratis.</p>
+        <div style="display:flex; gap:24px; margin-top:28px; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="color:var(--gold);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span style="font-size:0.85rem; color:rgba(245,240,232,0.7);">+8,000 suscriptores activos</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="color:var(--gold);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span style="font-size:0.85rem; color:rgba(245,240,232,0.7);">Tasa de apertura del 34%</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="color:var(--gold);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span style="font-size:0.85rem; color:rgba(245,240,232,0.7);">Cancela cuando quieras</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form class="newsletter__form" onsubmit="handleNewsletterSubmit(event)" novalidate>
+          <div>
+            <label for="nl-name" style="font-size:0.78rem; color:rgba(245,240,232,0.6); margin-bottom:6px; display:block;">Nombre</label>
+            <input type="text" id="nl-name" class="newsletter__input" placeholder="Tu nombre" autocomplete="given-name" required />
+          </div>
+          <div>
+            <label for="nl-email" style="font-size:0.78rem; color:rgba(245,240,232,0.6); margin-bottom:6px; display:block;">Email</label>
+            <div class="newsletter__input-row">
+              <input type="email" id="nl-email" class="newsletter__input" placeholder="tu@email.com" autocomplete="email" required />
+              <button type="submit" class="btn btn--gold">Suscribirse →</button>
+            </div>
+          </div>
+          <p class="newsletter__note">Al suscribirte aceptas nuestra política de privacidad. Nunca compartiremos tu email con terceros.</p>
+          <div id="nl-success" style="display:none; color:var(--gold); font-size:0.88rem; font-weight:600;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> ¡Suscrito correctamente! Revisa tu email.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" aria-label="Pie de página">
+  <div class="container">
+    <div class="footer__main">
+      <div>
+        <div class="nav__logo" style="color:var(--cream); margin-bottom:0;">
+          <div class="nav__logo-mark">L</div>
+          LibreStack
+        </div>
+        <p class="footer__brand-desc">La plataforma referente en habla hispana para freelancers y trabajadores remotos. Reseñas honestas, comparativas detalladas y tutoriales que realmente funcionan.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Twitter/X">𝕏</a>
+          <a href="#" class="footer__social-link" aria-label="YouTube">▶</a>
+          <a href="#" class="footer__social-link" aria-label="LinkedIn">in</a>
+          <a href="#" class="footer__social-link" aria-label="Instagram">◎</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Contenido</div>
+        <ul class="footer__links">
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#herramientas">Directorio de herramientas</a></li>
+          <li><a href="#guias">Guías y tutoriales</a></li>
+          <li><a href="#comparativas">Comparativas</a></li>
+          <li><a href="#recursos">Recursos gratis</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Categorías</div>
+        <ul class="footer__links">
+          <li><a href="#">Facturación</a></li>
+          <li><a href="#">Automatización</a></li>
+          <li><a href="#">Productividad</a></li>
+          <li><a href="#">CRM</a></li>
+          <li><a href="#">Seguridad</a></li>
+          <li><a href="#">Diseño</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Empresa</div>
+        <ul class="footer__links">
+          <li><a href="#">Sobre nosotros</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+          <li><a href="#">Advertise</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+          <li><a href="#">Colaboraciones</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2025 LibreStack. Todos los derechos reservados.</span>
+      <div class="footer__bottom-links">
+        <a href="privacy-policy.html">Política de privacidad</a>
+        <a href="terms-of-service.html">Términos de uso</a>
+        <a href="cookie-policy.html">Política de cookies</a>
+        <a href="affiliate-disclosure.html">Aviso de afiliados</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top button -->
+<button class="scroll-top" id="scrollTop" aria-label="Volver al inicio" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // ===== PAGE LOADER =====
+  window.addEventListener('load', () => {
+    const fill = document.getElementById('loaderFill');
+    const loader = document.getElementById('pageLoader');
+    fill.style.width = '100%';
+    setTimeout(() => { loader.style.opacity = '0'; loader.style.transition = 'opacity 0.4s'; }, 300);
+    setTimeout(() => { loader.style.display = 'none'; }, 700);
+  });
+
+  // Fake progress animation
+  const fill = document.getElementById('loaderFill');
+  let width = 0;
+  const interval = setInterval(() => {
+    width += Math.random() * 20;
+    if (width >= 80) { clearInterval(interval); return; }
+    fill.style.width = width + '%';
+  }, 100);
+
+  // ===== HAMBURGER MENU =====
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    hamburger.querySelectorAll('span')[0].style.transform = isOpen ? 'rotate(45deg) translate(5px, 5px)' : '';
+    hamburger.querySelectorAll('span')[1].style.opacity = isOpen ? '0' : '1';
+    hamburger.querySelectorAll('span')[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px, -5px)' : '';
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    });
+  });
+
+  // ===== SCROLL TO TOP =====
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.classList.add('visible');
+    } else {
+      scrollTopBtn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  // ===== INTERSECTION OBSERVER for animations =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ===== NEWSLETTER SUBMIT =====
+  function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('nl-email').value;
+    const name = document.getElementById('nl-name').value;
+    if (!email || !name) return;
+    const success = document.getElementById('nl-success');
+    success.style.display = 'block';
+    e.target.querySelector('.btn').textContent = '¡Listo! <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+    e.target.querySelector('.btn').style.background = 'var(--teal)';
+  }
+
+  // ===== SMOOTH NAV HIGHLIGHTING =====
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav__links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current
+        ? 'var(--ink)' : '';
+    });
+  }, { passive: true });
+
+  // ===== KEYBOARD ACCESSIBILITY for recent items =====
+  document.querySelectorAll('.recent-item').forEach(item => {
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        item.click();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

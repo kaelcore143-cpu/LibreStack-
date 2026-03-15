@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Make (Integromat) para Freelancers: Automatización Avanzada sin Código — LibreStack</title>
+  <meta name="description" content="Guía de Make (antes Integromat) para freelancers. Aprende a crear automatizaciones avanzadas, conectar aplicaciones y ahorrar horas de trabajo repetitivo."/>
+  <meta name="keywords" content="Make Integromat freelancer, automatización sin código, Make vs Zapier, workflows automatizados"/>
+  <meta name="robots" content="index, follow"/>
+  <meta property="og:title" content="Make (Integromat) para Freelancers: Automatización Avanzada sin Código"/>
+  <meta property="og:description" content="Guía de Make (antes Integromat) para freelancers. Aprende a crear automatizaciones avanzadas, conectar aplicaciones y ahorrar horas de trabajo repetitivo."/>
+  <meta property="og:type" content="article"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://librestack.com/make-automatizacion-avanzada-freelancers.html"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Make (Integromat) para Freelancers: Automatización Avanzada sin Código","description":"Guía de Make (antes Integromat) para freelancers. Aprende a crear automatizaciones avanzadas, conectar aplicaciones y ahorrar horas de trabajo repetitivo.","datePublished":"2025-03-15","author":{"@type":"Organization","name":"LibreStack"},"publisher":{"@type":"Organization","name":"LibreStack"}}
+  </script>
+  <style>
+    .ah{background:linear-gradient(135deg,var(--teal-pale),var(--cream-dark));padding:64px 0 48px;text-align:center;}
+    .ah em{font-size:3.5rem;display:block;margin-bottom:18px;}
+    .ah-meta{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;font-size:0.8rem;color:var(--ink-muted);}
+    .ab{max-width:760px;margin:0 auto;padding:56px 24px;}
+    .ab-intro{font-size:1.08rem;color:var(--ink-soft);line-height:1.8;margin-bottom:36px;padding-bottom:28px;border-bottom:2px solid var(--cream-dark);}
+    .ab h2{margin:36px 0 14px;}
+    .ab h3{margin:22px 0 10px;font-size:1.1rem;}
+    .ab p{margin-bottom:14px;}
+    .ab ul,.ab ol{padding-left:22px;margin-bottom:18px;display:flex;flex-direction:column;gap:7px;}
+    .ab li{color:var(--ink-soft);line-height:1.7;}
+    .cta-box{background:var(--ink);border-radius:16px;padding:36px;text-align:center;margin:44px 0;color:var(--cream);}
+    .cta-box h3{color:var(--cream);margin-bottom:8px;}
+    .cta-box p{color:rgba(245,240,232,0.7);margin-bottom:20px;}
+    .rating-box{background:var(--white);border:1px solid rgba(26,21,16,0.08);border-radius:12px;padding:22px;margin:28px 0;display:flex;align-items:center;gap:18px;}
+    .rating-score{font-family:var(--serif);font-size:2.6rem;color:var(--gold);flex-shrink:0;}
+    .rel-section{margin-top:56px;padding-top:36px;border-top:2px solid var(--cream-dark);}
+    .rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;}
+    .related-card{background:var(--white);border-radius:10px;padding:18px;border:1px solid rgba(26,21,16,0.07);display:flex;flex-direction:column;transition:all 0.2s;}
+    .related-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+    .related-card h4{font-size:0.88rem;line-height:1.4;}
+    .author-box{background:var(--cream-dark);border-radius:12px;padding:22px;margin:36px 0;display:flex;gap:14px;align-items:center;}
+    .author-avatar{width:50px;height:50px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--cream);font-size:1.3rem;flex-shrink:0;}
+    .disc-note{font-size:0.78rem;color:var(--ink-muted);padding:10px 14px;background:var(--cream-dark);border-radius:6px;margin-bottom:28px;}
+    @media(max-width:640px){.rel-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<section class="ah">
+  <div class="container--narrow">
+    <em><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>️</em>
+    <div class="ah-meta">
+      <span class="tag tag--teal">Tutorial</span>
+      <span>· Automatización</span>
+      <span>· 1 de febrero de 2025</span>
+      <span>· ⏱ 14 min</span>
+    </div>
+    <h1>Make (Integromat) para Freelancers: Automatización Avanzada sin Código</h1>
+  </div>
+</section>
+<div class="ab fade-up">
+  <div class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="index.html#blog">Automatización</a>
+    <span class="breadcrumb__sep">›</span>
+    <span>Make (Integromat) para Freelancers: Automatiz...</span>
+  </div>
+  <p class="disc-note"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>️ Aviso de afiliados: Este artículo puede contener enlaces de afiliados. <a href="affiliate-disclosure.html" style="color:var(--teal);">Más información</a>.</p>
+  <p class="ab-intro">Si Zapier es la puerta de entrada a la automatización para freelancers, Make (antes conocido como Integromat) es el siguiente nivel. Con una interfaz visual más potente y un plan gratuito más generoso, Make permite crear automatizaciones complejas que serían imposibles o muy caras en Zapier. Esta guía te lleva de cero a automatizador avanzado.</p>
+  
+<h2>Make vs Zapier: ¿Cuál elegir?</h2>
+<p>Esta es la pregunta que se hace todo freelancer interesado en automatización. La respuesta honesta es: depende de tu perfil:</p>
+<div style="overflow-x:auto;border-radius:10px;box-shadow:var(--shadow-md);margin:20px 0;">
+<table style="width:100%;border-collapse:collapse;background:var(--white);font-size:0.88rem;">
+  <thead><tr style="background:var(--ink);color:var(--cream);">
+    <th style="padding:12px;">Criterio</th><th style="padding:12px;">Make</th><th style="padding:12px;">Zapier</th>
+  </tr></thead>
+  <tbody>
+    <tr style="border-bottom:1px solid var(--cream-dark);"><td style="padding:12px;font-weight:600;">Curva de aprendizaje</td><td style="padding:12px;text-align:center;">Media-alta</td><td style="padding:12px;text-align:center;">Baja</td></tr>
+    <tr style="border-bottom:1px solid var(--cream-dark);background:rgba(245,240,232,0.5);"><td style="padding:12px;font-weight:600;">Plan gratuito</td><td style="padding:12px;text-align:center;color:var(--teal);">1,000 ops/mes</td><td style="padding:12px;text-align:center;">100 tareas/mes</td></tr>
+    <tr style="border-bottom:1px solid var(--cream-dark);"><td style="padding:12px;font-weight:600;">Lógica condicional</td><td style="padding:12px;text-align:center;color:var(--teal);">Avanzada</td><td style="padding:12px;text-align:center;">Básica</td></tr>
+    <tr style="border-bottom:1px solid var(--cream-dark);background:rgba(245,240,232,0.5);"><td style="padding:12px;font-weight:600;">Precio base pago</td><td style="padding:12px;text-align:center;color:var(--teal);">$9/mes</td><td style="padding:12px;text-align:center;">$19.99/mes</td></tr>
+    <tr><td style="padding:12px;font-weight:600;">Integraciones</td><td style="padding:12px;text-align:center;">1,500+</td><td style="padding:12px;text-align:center;color:var(--teal);">6,000+</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>Conclusión:</strong> Si eres nuevo en automatización, empieza con Zapier. Si ya tienes experiencia o quieres más potencia por menos dinero, Make es la mejor opción.</p>
+<h2>Conceptos básicos de Make</h2>
+<ul>
+  <li><strong>Escenario:</strong> El equivalente a un "Zap" — el flujo completo de automatización</li>
+  <li><strong>Módulo:</strong> Cada aplicación o acción dentro del escenario (Gmail, Notion, Google Sheets...)</li>
+  <li><strong>Operaciones:</strong> Cada vez que Make procesa un dato. El plan gratuito incluye 1,000 ops/mes</li>
+  <li><strong>Trigger:</strong> El evento que activa el escenario (nuevo email, nuevo lead, hora programada...)</li>
+  <li><strong>Router:</strong> Divide el flujo en múltiples ramas según condiciones — la superpotencia de Make</li>
+</ul>
+<h2>5 automatizaciones Make para freelancers</h2>
+<h3>1. Pipeline de onboarding de cliente completo</h3>
+<p>Cuando un cliente firma un contrato en DocuSign → Crea carpeta en Google Drive → Añade al CRM en HubSpot → Envía email de bienvenida personalizado → Crea proyecto en Notion → Envía invitación a Slack. Todo automático, en segundos.</p>
+<h3>2. Sistema de captura de leads desde múltiples fuentes</h3>
+<p>Unifica leads de formulario web, LinkedIn, email y WhatsApp → Los normaliza y filtra por criterios → Los añade a tu CRM con etiquetas → Programa seguimiento automático según la fuente.</p>
+<h3>3. Generación automática de informes semanales</h3>
+<p>Cada viernes a las 17:00 → Recoge datos de tiempo trabajado en Toggl → Calcula facturación generada → Compila tareas completadas de ClickUp → Genera informe en Google Docs → Lo envía por email al cliente.</p>
+<h3>4. Backup automático de archivos de clientes</h3>
+<p>Cuando se añade un archivo a la carpeta del cliente en Google Drive → Copia automáticamente a Dropbox como backup → Registra en Notion qué archivo se respaldó y cuándo.</p>
+<h3>5. Notificaciones de pago recibido</h3>
+<p>Cuando Stripe registra un pago → Actualiza el deal en HubSpot a "Pagado" → Envía email de agradecimiento al cliente → Añade entrada en hoja de ingresos en Google Sheets → Notifica en Slack.</p>
+  <div class="rating-box">
+    <div class="rating-score">8.8</div>
+    <div>
+      <div style="font-size:0.75rem;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.1em;">Puntuación LibreStack</div>
+      <div style="font-size:0.88rem;color:var(--ink-soft);margin-top:4px;">Basada en pruebas reales, precio/valor y usabilidad</div>
+      <div style="color:var(--gold);margin-top:6px;"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+    </div>
+  </div>
+  <div class="cta-box">
+    <h3>¿Listo para empezar?</h3>
+    <p>Prueba esta herramienta y lleva tu productividad freelance al siguiente nivel.</p>
+    <a href="#" class="btn btn--gold">Empezar con Make gratis →</a>
+  </div>
+  <div class="author-box">
+    <div class="author-avatar"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+    <div>
+      <div style="font-weight:600;margin-bottom:4px;">Equipo LibreStack</div>
+      <div style="font-size:0.85rem;color:var(--ink-muted);">Analizamos y probamos herramientas para freelancers desde 2024. Cada reseña se basa en uso real.</div>
+    </div>
+  </div>
+  <div class="rel-section">
+    <h2>Artículos relacionados</h2>
+    <div class="rel-grid"><a href="guia-definitiva-zapier-freelancers.html" class="related-card">
+            <span class="tag tag--teal" style="margin-bottom:8px;">Automatización</span>
+            <h4>Guía definitiva de Zapier</h4>
+            <span style="font-size:0.8rem;color:var(--teal);font-weight:600;margin-top:8px;display:block;">Leer →</span>
+          </a><a href="notion-vs-asana-comparativa-freelancers.html" class="related-card">
+            <span class="tag tag--teal" style="margin-bottom:8px;">Productividad</span>
+            <h4>Notion vs Asana</h4>
+            <span style="font-size:0.8rem;color:var(--teal);font-weight:600;margin-top:8px;display:block;">Leer →</span>
+          </a><a href="stripe-cobrar-clientes-internacionales.html" class="related-card">
+            <span class="tag tag--teal" style="margin-bottom:8px;">Facturación</span>
+            <h4>Stripe para freelancers</h4>
+            <span style="font-size:0.8rem;color:var(--teal);font-weight:600;margin-top:8px;display:block;">Leer →</span>
+          </a></div>
+  </div>
+</div>
+<script src="shared-nav.js"></script>
+</body>
+</html>

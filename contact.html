@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - LibreStack</title>
+  <meta name="description" content="Contacta con LibreStack. Envíanos tus preguntas, sugerencias o colaboraciones. Responderemos en 24-48 horas.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://librestack.com/contact.html">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --cream: #F5F0E8;
+      --cream-dark: #EDE7D9;
+      --ink: #1A1510;
+      --ink-soft: #3D3529;
+      --ink-muted: #7A6F63;
+      --gold: #C8952A;
+      --gold-light: #E8B84B;
+      --gold-pale: #F5E6C2;
+      --teal: #1D6B72;
+      --teal-light: #2A8F99;
+      --teal-pale: #D4EEF0;
+      --rust: #B84C2A;
+      --rust-pale: #FAE8E2;
+      --white: #FFFFFF;
+      --shadow-sm: 0 1px 3px rgba(26,21,16,0.08);
+      --shadow-md: 0 4px 16px rgba(26,21,16,0.10);
+      --shadow-lg: 0 12px 40px rgba(26,21,16,0.14);
+      --radius: 4px;
+      --radius-lg: 12px;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background-color: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,240,232,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26,21,16,0.1);
+      margin: -20px -24px 40px -24px;
+      padding: 0 24px;
+    }
+
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav__logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--serif); font-size: 1.4rem; color: var(--ink);
+      text-decoration: none;
+    }
+    .nav__logo-mark {
+      width: 34px; height: 34px; background: var(--ink);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      color: var(--cream); font-size: 1rem;
+    }
+
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; color: var(--ink-muted);
+      padding: 16px 0; margin-bottom: 8px;
+    }
+    .breadcrumb a { color: var(--ink-muted); transition: color 0.2s; text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb__sep { color: rgba(26,21,16,0.3); }
+
+    /* ===== CONTACT PAGE ===== */
+    .contact-page {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start;
+      margin-bottom: 80px;
+    }
+
+    .contact__info {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(26,21,16,0.07);
+    }
+
+    .contact__form {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(26,21,16,0.07);
+    }
+
+    h1 {
+      font-family: var(--serif); font-size: 2.5rem;
+      color: var(--ink); margin-bottom: 24px;
+    }
+
+    h2 {
+      font-family: var(--serif); font-size: 1.8rem;
+      color: var(--ink); margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 1.2rem; color: var(--ink);
+      margin: 24px 0 12px;
+    }
+
+    p {
+      color: var(--ink-soft); margin-bottom: 20px;
+    }
+
+    .contact-methods {
+      display: flex; flex-direction: column; gap: 24px;
+      margin: 32px 0;
+    }
+
+    .contact-method {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px; background: var(--cream);
+      border-radius: var(--radius-lg);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-method:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-method__icon {
+      width: 48px; height: 48px; background: var(--teal);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.2rem; flex-shrink: 0;
+    }
+
+    .contact-method__content h4 {
+      font-size: 1rem; margin-bottom: 4px; color: var(--ink);
+    }
+
+    .contact-method__content p {
+      font-size: 0.9rem; margin-bottom: 0; color: var(--ink-muted);
+    }
+
+    .contact-method__content a {
+      color: var(--teal); text-decoration: none; font-weight: 500;
+    }
+
+    .contact-method__content a:hover {
+      text-decoration: underline;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block; font-size: 0.9rem; font-weight: 500;
+      color: var(--ink); margin-bottom: 8px;
+    }
+
+    input, textarea, select {
+      width: 100%; padding: 14px 16px;
+      border: 1.5px solid rgba(26,21,16,0.15);
+      border-radius: var(--radius); font-family: var(--sans);
+      font-size: 0.95rem; transition: border-color 0.2s, box-shadow 0.2s;
+      background: var(--white);
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none; border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(29,107,114,0.1);
+    }
+
+    textarea {
+      resize: vertical; min-height: 120px;
+    }
+
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--sans); font-size: 0.875rem; font-weight: 600;
+      padding: 14px 28px; border-radius: var(--radius);
+      cursor: pointer; border: none; transition: all 0.2s ease;
+      letter-spacing: 0.02em; text-decoration: none;
+    }
+
+    .btn--primary {
+      background: var(--ink); color: var(--cream);
+    }
+
+    .btn--primary:hover {
+      background: var(--ink-soft); transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn--primary:disabled {
+      background: var(--ink-muted); cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-note {
+      font-size: 0.8rem; color: var(--ink-muted);
+      margin-top: 16px; padding-top: 16px;
+      border-top: 1px solid var(--cream-dark);
+    }
+
+    .success-message {
+      background: #d4f4dd; color: #1a7f37;
+      padding: 16px; border-radius: var(--radius);
+      margin-bottom: 20px; display: none;
+      border: 1px solid #a7d3b3;
+    }
+
+    .error-message {
+      background: #fae8e2; color: #b84c2a;
+      padding: 16px; border-radius: var(--radius);
+      margin-bottom: 20px; display: none;
+      border: 1px solid #d4a595;
+    }
+
+    .office-hours {
+      background: var(--gold-pale); padding: 20px;
+      border-radius: var(--radius-lg); margin: 24px 0;
+    }
+
+    .office-hours h4 {
+      font-size: 1rem; margin-bottom: 12px; color: var(--gold);
+    }
+
+    .office-hours p {
+      font-size: 0.9rem; margin-bottom: 4px; color: var(--ink-soft);
+    }
+
+    .social-links {
+      display: flex; gap: 12px; margin-top: 24px;
+    }
+
+    .social-link {
+      width: 44px; height: 44px; background: var(--ink);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      color: var(--cream); text-decoration: none; transition: background 0.2s;
+    }
+
+    .social-link:hover {
+      background: var(--teal);
+    }
+
+    /* ===== FAQ SECTION ===== */
+    .faq-section {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 48px; margin-bottom: 40px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(26,21,16,0.07);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--cream-dark);
+      padding: 20px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none; padding-bottom: 0;
+    }
+
+    .faq-question {
+      font-size: 1.1rem; font-weight: 600; color: var(--ink);
+      margin-bottom: 12px; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .faq-question::after {
+      content: '+'; font-size: 1.5rem; color: var(--teal);
+      transition: transform 0.2s;
+    }
+
+    .faq-question.open::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      color: var(--ink-soft); line-height: 1.7;
+      display: none;
+    }
+
+    .faq-answer.show {
+      display: block;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .contact-page {
+        grid-template-columns: 1fr; gap: 40px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 10px; }
+      .header { margin: -10px -10px 20px -10px; padding: 0 10px; }
+      .container { padding: 0 10px; }
+      .contact__info, .contact__form, .faq-section {
+        padding: 32px 24px;
+      }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo" aria-label="LibreStack inicio">
+        <div class="nav__logo-mark">F</div>
+        LibreStack
+      </a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ===== BREADCRUMB ===== -->
+<nav class="breadcrumb" aria-label="Navegación">
+  <a href="index.html">Inicio</a>
+  <span class="breadcrumb__sep">›</span>
+  <span>Contacto</span>
+</nav>
+
+<!-- ===== CONTACT PAGE ===== -->
+<div class="contact-page">
+
+  <!-- Contact Information -->
+  <div class="contact__info">
+    <h1>Hablemos</h1>
+    <p>¿Tienes preguntas, sugerencias o quieres colaborar con nosotros? Estamos aquí para ayudarte. Responderemos a tu mensaje en 24-48 horas hábiles.</p>
+
+    <div class="contact-methods">
+      <div class="contact-method">
+        <div class="contact-method__icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="contact-method__content">
+          <h4>Email General</h4>
+          <p>Para consultas generales, soporte y colaboraciones</p>
+          <a href="/cdn-cgi/l/email-protection#93fbfcfff2d3f5e1f6f6fff2fdf0f6e1e3e1fcbdf0fcfe"><span class="__cf_email__" data-cfemail="e48c8b8885a48296818188858a87819694968bca878b89">[email&#160;protected]</span></a>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="contact-method__icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div class="contact-method__content">
+          <h4>Asuntos Legales</h4>
+          <p>Políticas de privacidad, términos y cuestiones legales</p>
+          <a href="/cdn-cgi/l/email-protection#563a3331373a16302433333a37383533242624397835393b"><span class="__cf_email__" data-cfemail="721e1715131e32140017171e131c11170002001d5c111d1f">[email&#160;protected]</span></a>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="contact-method__icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="contact-method__content">
+          <h4>Colaboraciones</h4>
+          <p>Partnerships, publicidad y oportunidades de negocio</p>
+          <a href="/cdn-cgi/l/email-protection#adddccdfd9c3c8dfdeedcbdfc8c8c1ccc3cec8dfdddfc283cec2c0"><span class="__cf_email__" data-cfemail="15657467617b706766557367707079747b76706765677a3b767a78">[email&#160;protected]</span></a>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="contact-method__icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></div>
+        <div class="contact-method__content">
+          <h4>Prensa y Medios</h4>
+          <p>Entrevistas, artículos y solicitudes de medios</p>
+          <a href="/cdn-cgi/l/email-protection#e29290879191a2849087878e838c81879092908dcc818d8f"><span class="__cf_email__" data-cfemail="48383a2d3b3b082e3a2d2d2429262b2d3a383a27662b2725">[email&#160;protected]</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="office-hours">
+      <h4><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Horario de Atención</h4>
+      <p>Lunes a Viernes: 9:00 - 18:00 (CET)</p>
+      <p>Sábados: 10:00 - 14:00 (CET)</p>
+      <p>Domingos y festivos: Cerrado</p>
+    </div>
+
+    <h3>Síguenos en Redes</h3>
+    <p>Encuentra contenido diario, tips y comunidad en nuestras redes sociales:</p>
+    
+    <div class="social-links">
+      <a href="#" class="social-link" aria-label="Twitter/X">𝕏</a>
+      <a href="#" class="social-link" aria-label="YouTube">▶</a>
+      <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+      <a href="#" class="social-link" aria-label="Instagram">◎</a>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="contact__form">
+    <h2>Envíanos un Mensaje</h2>
+    <p>Rellena el formulario y te responderemos lo antes posible.</p>
+
+    <div class="success-message" id="successMessage">
+      <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> ¡Mensaje enviado correctamente! Te responderemos en 24-48 horas.
+    </div>
+
+    <div class="error-message" id="errorMessage">
+      <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.
+    </div>
+
+    <form id="contactForm" onsubmit="handleContactSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Nombre *</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Asunto *</label>
+        <select id="subject" name="subject" required>
+          <option value="">Selecciona un motivo</option>
+          <option value="general">Consulta general</option>
+          <option value="support">Soporte técnico</option>
+          <option value="collaboration">Colaboración</option>
+          <option value="advertising">Publicidad</option>
+          <option value="feedback">Sugerencias</option>
+          <option value="legal">Asuntos legales</option>
+          <option value="other">Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Mensaje *</label>
+        <textarea id="message" name="message" required placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn--primary" id="submitBtn">
+        Enviar Mensaje →
+      </button>
+
+      <p class="form-note">
+        Al enviar este formulario, aceptas nuestra <a href="privacy-policy.html">política de privacidad</a>. 
+        Tus datos serán tratados de forma confidencial y solo para responder a tu consulta.
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="faq-section">
+  <h2>Preguntas Frecuentes</h2>
+  
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">
+      ¿Cuánto tardáis en responder?
+    </div>
+    <div class="faq-answer">
+      Respondemos a todos los mensajes en 24-48 horas hábiles. Las consultas urgentes pueden tardar menos tiempo, mientras que las colaboraciones y proyectos especiales pueden requerir hasta 72 horas.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">
+      ¿Aceptáis colaboraciones con otros sitios?
+    </div>
+    <div class="faq-answer">
+      ¡Sí! Estamos abiertos a colaboraciones con sitios, marcas y expertos que compartan nuestra misión de ayudar a freelancers. Envíanos un email a <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="60100112140e05121320061205050c010e03051210120f4e030f0d">[email&#160;protected]</a> con tu propuesta.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">
+      ¿Cómo puedo solicitar una reseña de mi producto?
+    </div>
+    <div class="faq-answer">
+      Si tienes una herramienta o servicio que crees que puede beneficiar a freelancers, contáctanos en <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="93fbfcfff2d3f5e1f6f6fff2fdf0f6e1e3e1fcbdf0fcfe">[email&#160;protected]</a>. Evaluamos cada solicitud basándonos en la relevancia para nuestra audiencia y nuestro compromiso con reseñas honestas.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">
+      ¿Ofrecéis servicios de consultoría?
+    </div>
+    <div class="faq-answer">
+      Actualmente nos enfocamos en contenido educativo gratuito, pero consideramos proyectos de consultoría selectivos. Contáctanos con los detalles de tu proyecto y evaluaremos cómo podemos ayudarte.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">
+      ¿Cómo puedo reportar un error en el sitio?
+    </div>
+    <div class="faq-answer">
+      Agradecemos mucho que nos ayudes a mejorar. Puedes reportar cualquier error o problema técnico enviando un email a <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f0c0a0f0f100d0b3f190d1a1a131e111c1a0d0f0d10511c1012">[email&#160;protected]</a> o usando el formulario de contacto.
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Form submission handler
+  function handleContactSubmit(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const submitBtn = document.getElementById('submitBtn');
+    const successMsg = document.getElementById('successMessage');
+    const errorMsg = document.getElementById('errorMessage');
+    
+    // Disable submit button
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    
+    // Hide previous messages
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+    
+    // Get form data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    // Simulate form submission (replace with actual endpoint)
+    setTimeout(() => {
+      // Simulate success (90% success rate for demo)
+      const isSuccess = Math.random() > 0.1;
+      
+      if (isSuccess) {
+        successMsg.style.display = 'block';
+        form.reset();
+        submitBtn.textContent = '¡Enviado! <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Enviar Mensaje →';
+        }, 3000);
+      } else {
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
+  
