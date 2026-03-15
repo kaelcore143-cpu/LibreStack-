@@ -1,4 +1,4 @@
-# LibreStack - robots.txt
+# propointers - robots.txt
 # Última actualización: 15 de marzo de 2025
 
 User-agent: *
@@ -74,4 +74,4 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-Sitemap: https://librestack.com/sitemap.xml
+Sitemap: https://propointers.com/sitemap.xml
