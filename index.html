@@ -7,11 +7,29 @@
   <meta name="description" content="La plataforma referente en habla hispana para freelancers. Reseñas, comparativas y tutoriales de las mejores herramientas de productividad, facturación y gestión de proyectos." />
   <meta name="keywords" content="herramientas para freelancers, software facturación freelancer, productividad freelancer, trabajo remoto, crm freelancers" />
   <meta name="robots" content="index, follow" />
+  <meta name="author" content="Propointers" />
+  <meta name="language" content="es" />
+  <meta name="geo.region" content="ES" />
+  <meta name="geo.placename" content="Spain" />
   <meta property="og:title" content="Propointers — Herramientas y Productividad" />
   <meta property="og:description" content="La plataforma referente en habla hispana para freelancers y trabajadores remotos." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://propointers.com/" />
+  <meta property="og:site_name" content="Propointers" />
+  <meta property="og:locale" content="es_ES" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@propointers" />
+  <meta name="twitter:creator" content="@propointers" />
   <link rel="canonical" href="https://propointers.com/" />
+  
+  <!-- Favicon and app icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#1D6B72">
+  <meta name="msapplication-TileColor" content="#F5F0E8">
+  <meta name="theme-color" content="#1D6B72">
 
   <!-- DNS Prefetch for external resources -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -1565,6 +1583,44 @@
       }
     });
   });
+</script>
+
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Propointers",
+  "url": "https://propointers.com",
+  "description": "La plataforma referente en habla hispana para freelancers. Reseñas, comparativas y tutoriales de las mejores herramientas de productividad, facturación y gestión de proyectos.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Propointers",
+    "url": "https://propointers.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://propointers.com/logo.png",
+      "width": 512,
+      "height": 512
+    }
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://propointers.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "sameAs": [
+    "https://twitter.com/propointers",
+    "https://linkedin.com/company/propointers"
+  ]
+}
+</script>
+
+<!-- PWA Manifest -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(console.error);
+  }
 </script>
 
 </body>

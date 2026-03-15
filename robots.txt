@@ -7,6 +7,14 @@ Allow: /
 # Páginas de contenido
 Allow: /index.html
 Allow: /contact.html
+Allow: /categoria-automatizacion.html
+Allow: /categoria-comunicacion.html
+Allow: /categoria-crm.html
+Allow: /categoria-diseno.html
+Allow: /categoria-facturacion.html
+Allow: /categoria-productividad.html
+Allow: /categoria-seguridad.html
+Allow: /categoria-analytics.html
 Allow: /guia-definitiva-zapier-freelancers.html
 Allow: /notion-vs-asana-comparativa-freelancers.html
 Allow: /mejores-software-facturacion-freelancers.html
