@@ -16,7 +16,6 @@
   <!-- DNS Prefetch for external resources -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="preload" href="https://fonts.gstatic.com/s/dmserifdisplay/v15/-nFnOHM81r4j6k0gjAW3mujVU2B2G_VB3vD5.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
 
@@ -248,8 +247,8 @@
       border: 1px solid rgba(26,21,16,0.06);
       animation: float 4s ease-in-out infinite;
     }
-    .hero__badge--1 { top: -20px; left: -30px; animation-delay: 0s; }
-    .hero__badge--2 { bottom: 20px; right: -20px; animation-delay: 2s; }
+    .hero__badge--1 { top: -20px; left: -30px; animation-delay: 0s; z-index: 10; }
+    .hero__badge--2 { bottom: 20px; right: -20px; animation-delay: 2s; z-index: 10; }
     .hero__badge-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
     .hero__badge-dot--teal { background: var(--teal); }
     .hero__badge-dot--gold { background: var(--gold); }
